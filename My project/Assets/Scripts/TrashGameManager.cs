@@ -1,13 +1,25 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TrashGameManager : MonoBehaviour
 {
     #region Variables
     private int score;
-    private float time;
+    public float time;
     private string playerName;
+    private string player1Name;
+    private string player2Name;
+    public bool wheelsActive;
+    private bool player1Flag;
+    private bool player2Flag;
 
+    [Header("Gameplay elements")]
+    [SerializeField] private GameObject cannon1;
+    [SerializeField] private GameObject cannon2;
+    [SerializeField] private GameObject pegContainer;
+
+    [Header("Leaderboard elements")]
     [SerializeField] private TextMeshProUGUI scoreText_1;
     [SerializeField] private TextMeshProUGUI scoreText_2;
     [SerializeField] private TextMeshProUGUI timeText_1;
@@ -19,6 +31,8 @@ public class TrashGameManager : MonoBehaviour
     [SerializeField] private GameObject player2Canvas;
     [SerializeField] private GameObject leaderboardCanvas_1;
     [SerializeField] private GameObject leaderboardCanvas_2;
+    [SerializeField] private GameObject colourWheel;
+    [SerializeField] private GameObject animalWheel;
     #endregion
 
     private void Start()
@@ -29,6 +43,11 @@ public class TrashGameManager : MonoBehaviour
         player2Canvas.SetActive(true);
         leaderboardCanvas_1.SetActive(false);
         leaderboardCanvas_2.SetActive(false);
+        colourWheel.SetActive(false);
+        animalWheel.SetActive(false);
+        wheelsActive = false;
+        player1Flag = false;
+        player2Flag = false;
     }
 
     private void Update()
@@ -44,7 +63,28 @@ public class TrashGameManager : MonoBehaviour
         }
         else
         {
-            ShowLeaderboard();
+            bool shotActive = false;
+            string[] validateTags = { "Ball", "Ball_1", "Ball_2" };
+
+            foreach (string tag in validateTags)
+            {
+                GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+
+                foreach (GameObject obj in objs)
+                {
+                    if (obj.activeInHierarchy)
+                    {
+                        shotActive = true;
+                        break;
+                    }
+                }
+                if (shotActive) break;
+            }
+
+            if (!shotActive && !wheelsActive)
+            {
+                ShowWheels();
+            }
         }
     }
 
@@ -53,8 +93,26 @@ public class TrashGameManager : MonoBehaviour
         score += amount;
     }
 
+    private void ShowWheels()
+    {
+        cannon1.SetActive(false);
+        cannon2.SetActive(false);
+        pegContainer.SetActive(false);
+
+        colourWheel.SetActive(true);
+        animalWheel.SetActive(true);
+        wheelsActive = true;
+    }
+
+    private void HideWheels()
+    {
+        colourWheel.SetActive(false);
+        animalWheel.SetActive(false);
+    }
+
     private void ShowLeaderboard()
     {
+        HideWheels();
         player1Canvas.SetActive(false);
         player2Canvas.SetActive(false);
         leaderboardCanvas_1.SetActive(true);
@@ -66,17 +124,40 @@ public class TrashGameManager : MonoBehaviour
     public void EndGame()
     {
         leaderboard.AddEntry(playerName, score);
+        ShowLeaderboard();
     }
 
-    public void SetName(string name)
+    public void SetName(string name, int playerNo)
     {
-        if (playerName == null)
+        if (playerNo == 1)
         {
-            playerName = name;
+            player1Name = name;
         }
-        else
+        if (playerNo == 2)
         {
-            playerName = playerName + name;
+            player2Name = name;
+        }
+        if (player1Name != null && player2Name != null)
+        {
+            playerName = $"{player1Name} {player2Name}";
+            EndGame();
+        }
+    }
+
+    public void ReloadScene(int playerNo)
+    {
+        if (playerNo == 1)
+        {
+            player1Flag = true;
+        }
+        else if (playerNo == 2)
+        {
+            player2Flag = true;
+        }
+
+        if (player1Flag && player2Flag)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

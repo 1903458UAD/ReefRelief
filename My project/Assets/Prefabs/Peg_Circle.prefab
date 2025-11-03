@@ -172,9 +172,9 @@ MonoBehaviour:
   col: {fileID: 0}
   hits: 0
   GM: {fileID: 0}
-  stage1: {fileID: -3762138660336784635, guid: 84d5c80c4a131a44a81936d2254321d4, type: 3}
-  stage2: {fileID: 1749412441678017373, guid: 1a3fd5a79096a6041a431f67d97a0263, type: 3}
-  stage3: {fileID: -7332416770005380443, guid: 11676d9e14bf2934a925d5556da68ccc, type: 3}
+  stage1: {fileID: 4730759793127131783, guid: 18195ea0e77735b46a720fa7a69d4a05, type: 3}
+  stage2: {fileID: -8851584180340318427, guid: 69367ec9103d0fb458ecd0317432d5d3, type: 3}
+  stage3: {fileID: 8442381934448009849, guid: e8f56b13a6d67244fb830e4899767e0a, type: 3}
 --- !u!1 &499255282372132398
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3762138660336784635, guid: 84d5c80c4a131a44a81936d2254321d4, type: 3}
+  m_Sprite: {fileID: 4730759793127131783, guid: 18195ea0e77735b46a720fa7a69d4a05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

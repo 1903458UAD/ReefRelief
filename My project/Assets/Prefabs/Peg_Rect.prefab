@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6940702610000278185, guid: 5ceb254d4f65ec64cb000cc00fc570c1, type: 3}
+  m_Sprite: {fileID: 124113641218742926, guid: be80cb4c7c61cc045a93df1b3cbcd7bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -269,6 +269,6 @@ MonoBehaviour:
   col: {fileID: 0}
   hits: 0
   GM: {fileID: 0}
-  stage1: {fileID: 6940702610000278185, guid: 5ceb254d4f65ec64cb000cc00fc570c1, type: 3}
-  stage2: {fileID: -8893976136217653694, guid: f120b65b8c713d54ea43c2287d7f3d53, type: 3}
-  stage3: {fileID: 1403804829946891383, guid: d857bc2820d71a64eb0e6dd13050f88c, type: 3}
+  stage1: {fileID: 124113641218742926, guid: be80cb4c7c61cc045a93df1b3cbcd7bc, type: 3}
+  stage2: {fileID: -7488167373412951657, guid: f07fd9ca6ba30594ca1a6415b346474e, type: 3}
+  stage3: {fileID: 3743038817003452794, guid: 9d07882106d62ad4293585ee55669e93, type: 3}
