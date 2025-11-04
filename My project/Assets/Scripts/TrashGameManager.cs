@@ -35,6 +35,13 @@ public class TrashGameManager : MonoBehaviour
     [SerializeField] private GameObject animalWheel;
     [SerializeField] private TextMeshProUGUI currentText_1;
     [SerializeField] private TextMeshProUGUI currentText_2;
+
+    [Header("Fish")]
+    [SerializeField] private FishScript fish_1;
+    [SerializeField] private FishScript fish_2;
+    [SerializeField] private FishScript fish_3;
+    [SerializeField] private FishScript fish_4;
+    [SerializeField] private FishScript fish_5;
     #endregion
 
     private void Start()
@@ -56,6 +63,27 @@ public class TrashGameManager : MonoBehaviour
     {
         scoreText_1.text = score.ToString();
         scoreText_2.text = score.ToString();
+
+        if (Mathf.Ceil(time) == 50)
+        {
+            fish_1.MoveFish();
+        }
+        else if (Mathf.Ceil(time) == 40)
+        {
+            fish_2.MoveFish();
+        }
+        else if (Mathf.Ceil(time) == 30)
+        {
+            fish_3.MoveFish();
+        }
+        else if (Mathf.Ceil(time) == 20)
+        {
+            fish_4.MoveFish();
+        }
+        else if (Mathf.Ceil(time) == 10)
+        {
+            fish_5.MoveFish();
+        }
 
         if (time > 0)
         {
