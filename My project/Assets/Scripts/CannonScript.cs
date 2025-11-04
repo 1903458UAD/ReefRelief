@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CannonScript : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class CannonScript : MonoBehaviour
     [SerializeField] private bool canFire;
     [SerializeField] private float force;
     [SerializeField] private string ballTag;
+    [SerializeField] private AudioSource AS;
+    [SerializeField] private AudioClip audioFire;
+    [SerializeField] private AudioClip audioReload;
 
     private void Update()
     {
@@ -22,15 +26,26 @@ public class CannonScript : MonoBehaviour
         if (canFire)
         {
             ToggleCanFire(false);
-            GameObject shot = Instantiate(prefab, barrel.position, barrel.rotation);
-            shot.tag = ballTag;
-            Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
-            rb.AddForce(-barrel.up * force);
+            AS.PlayOneShot(audioFire, 1f);
+            StartCoroutine(FireDelay());
         }
     }
 
     public void ToggleCanFire(bool toggle)
     {
         canFire = toggle;
+        if (canFire)
+        {
+            AS.PlayOneShot(audioReload, 1f);
+        }
+    }
+
+    private IEnumerator FireDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        GameObject shot = Instantiate(prefab, barrel.position, barrel.rotation);
+        shot.tag = ballTag;
+        Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
+        rb.AddForce(-barrel.up * force);
     }
 }

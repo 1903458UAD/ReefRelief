@@ -33,6 +33,8 @@ public class TrashGameManager : MonoBehaviour
     [SerializeField] private GameObject leaderboardCanvas_2;
     [SerializeField] private GameObject colourWheel;
     [SerializeField] private GameObject animalWheel;
+    [SerializeField] private TextMeshProUGUI currentText_1;
+    [SerializeField] private TextMeshProUGUI currentText_2;
     #endregion
 
     private void Start()
@@ -124,6 +126,8 @@ public class TrashGameManager : MonoBehaviour
     public void EndGame()
     {
         leaderboard.AddEntry(playerName, score);
+        currentText_1.text = $"{playerName} {score}";
+        currentText_2.text = $"{playerName} {score}";
         ShowLeaderboard();
     }
 

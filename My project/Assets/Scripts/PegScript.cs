@@ -12,6 +12,12 @@ public class PegScript : MonoBehaviour
     [SerializeField] private int hits;
     [SerializeField] private TrashGameManager GM;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource AS;
+    [SerializeField] private AudioClip firstHit;
+    [SerializeField] private AudioClip secondHit;
+    [SerializeField] private AudioClip fallHit;
+
     [Header("Sprites")]
     [SerializeField] private Sprite stage1;
     [SerializeField] private Sprite stage2;
@@ -35,16 +41,19 @@ public class PegScript : MonoBehaviour
             if (hits == 0)
             {
                 GM.AddScore(500);
+                AS.PlayOneShot(firstHit, 0.8f);
                 hits++;
             }
             else if (hits == 1)
             {
                 GM.AddScore(750);
+                AS.PlayOneShot(secondHit, 0.8f);
                 hits++;
             }
             else if (hits == 2)
             {
                 GM.AddScore(1000);
+                AS.PlayOneShot(fallHit, 0.8f);
                 hits++;
             }
         }
@@ -54,16 +63,19 @@ public class PegScript : MonoBehaviour
             if (hits == 0)
             {
                 GM.AddScore(500);
+                AS.PlayOneShot(firstHit, 0.8f);
                 hits++;
             }
             else if (hits == 1)
             {
                 GM.AddScore(750);
+                AS.PlayOneShot(secondHit, 0.8f);
                 hits++;
             }
             else if (hits == 2)
             {
                 GM.AddScore(1000);
+                AS.PlayOneShot(fallHit, 0.8f);
                 hits++;
             }
         }
