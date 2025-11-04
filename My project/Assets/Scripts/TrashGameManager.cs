@@ -125,6 +125,8 @@ public class TrashGameManager : MonoBehaviour
 
     private void ShowWheels()
     {
+        player1Canvas.SetActive(false);
+        player2Canvas.SetActive(false);
         cannon1.SetActive(false);
         cannon2.SetActive(false);
         pegContainer.SetActive(false);

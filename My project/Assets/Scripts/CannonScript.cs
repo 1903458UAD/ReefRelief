@@ -14,6 +14,7 @@ public class CannonScript : MonoBehaviour
     [SerializeField] private AudioSource AS;
     [SerializeField] private AudioClip audioFire;
     [SerializeField] private AudioClip audioReload;
+    [SerializeField] private TrashGameManager GM;
 
     private void Update()
     {
@@ -23,7 +24,7 @@ public class CannonScript : MonoBehaviour
 
     public void Fire()
     {
-        if (canFire)
+        if (canFire && GM.time > 0)
         {
             ToggleCanFire(false);
             AS.PlayOneShot(audioFire, 1f);
